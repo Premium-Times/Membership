@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
+import LevelCard from "./levelcard";
+import BrandHeader from "./brandheader";
+import Introduction from "./introduction";
+import Footer from "./footer";
 
 export default class App extends Component {
   render() {
     return (
-      <div>React simple starter</div>
+      <div>
+        <BrandHeader />
+        
+        
+        <main>
+          <Introduction />
+          <LevelCard />
+        </main>
+        <Footer />
+      </div>
+      
     );
   }
 }
