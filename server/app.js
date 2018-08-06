@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const config = require('./config');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -11,6 +12,18 @@ const levels = require('./routes/levels');
 const members = require('./routes/members');
 
 const app = express();
+
+
+//set up mongoose connection
+var mongoose = require('mongoose');
+//A promis package to clear up deprecated promise warnin
+const { db: { host, port, name } } = config;
+mongoose.Promise = require('bluebird');
+const mongoDB = process.env.MONGODB_URI || `mongodb://${host}:${port}/${name}`;
+mongoose.Promise = global.Promise;
+mongoose.connect(mongoDB);
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error;'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
