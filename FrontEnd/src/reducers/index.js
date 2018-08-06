@@ -1,7 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
+import LevelReducer from "./reducer_memberLevel"
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  levels: LevelReducer
+  
 });
 
 export default rootReducer;
