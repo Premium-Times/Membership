@@ -17,9 +17,6 @@ export default class App extends Component {
           <Introduction />
           <LevelsBox>
             <LevelCard />
-            <LevelCard />
-            <LevelCard />
-            <LevelCard />
           </LevelsBox>
           <Testimonials />
         </main>

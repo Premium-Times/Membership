@@ -5,6 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const config = require('./config');
+const cors = require('cors');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -13,9 +14,11 @@ const members = require('./routes/members');
 
 const app = express();
 
+app.use(cors());
+
 
 //set up mongoose connection
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 //A promis package to clear up deprecated promise warnin
 const { db: { host, port, name } } = config;
 mongoose.Promise = require('bluebird');

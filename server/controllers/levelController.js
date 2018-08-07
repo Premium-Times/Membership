@@ -10,8 +10,9 @@ exports.level_list = (req, res, next) => {
             }
           //Successful, so send data
           // console.log(list_levels);
+          res.type('json');
           res.status(200);
-          res.send(levels);
+          res.json({levels});
         });
 };
 

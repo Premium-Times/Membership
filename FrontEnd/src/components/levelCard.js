@@ -1,15 +1,28 @@
 // High level card used to diaplay membership level information
 
 import React, { Component } from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import { fetchLevels } from "../actions";
 
 class LevelCard extends Component {
+    constructor(props){
+        super(props);
+        this.props.fetchLevels();
+    }
 
-    renderEachCard(levelArray){
-
-        levelArray.forEach((level) => {
+   
+    renderEachCard(){
+        // TODO: replace LOADING with Spinner
+        if(this.props.memberLevels.items.levels === undefined){
+            return(
+                <div>
+                    <h2> LOADING 2</h2>
+                </div>
+            )
+        }
+        return this.props.memberLevels.items.levels.map((level) => {
             return (
-                <div className="col-1-of-4">
+                <div key={level._id} className="col-1-of-4">
                 <div className="card">
                 <div className="card__side card__side--front">
                     <div className="card__picture card__picture--1">
@@ -17,17 +30,13 @@ class LevelCard extends Component {
                     </div>
                     <h4 className="card__heading">
                         <span className="card__heading-span card__heading-span-1">
-                                {level.name}
+                                {level.title}
                         </span>
                             
                     </h4>
                     <div className="card__details">
                             <ul>
-                                <li>Support the independence of the Premium Times and our award-winning journalism</li>                                            
-                                <li>Get Welcome Package</li>
-                                <li>Insider Programs</li>
-                                <li>Four Tickets to Premium Times Events</li>
-                                <li>Weekly Briefings</li>
+                                {this.renderDescriptors(level.descpriptors)}
                             </ul>
                     </div>
                 </div>
@@ -39,10 +48,10 @@ class LevelCard extends Component {
                                     Only
                                 </p>
                                 <p className="card__price-value-month">
-                                    ₦{level.monthlyCost}/year
+                                    ₦{level.monthly}/year
                                 </p>
                                 <p className="card__price-value-year">
-                                    ₦{level.annualCost}/year
+                                    ₦{level.annual}/year
                                 </p>
                             </div>
                             <a href="#" className="btn btn--white">
@@ -53,53 +62,26 @@ class LevelCard extends Component {
                 </div>
             </div>
             )
-        }, this);
-
+        });
+    }
+    renderDescriptors(descriptors){
+        return descriptors.map(descriptor => {
+            return(
+                <li>{descriptor}</li>
+            )
+        })
     }
     render(){
+        if(this.props.memberLevels.loading){
+            return (
+                <div>
+                    <h2>Loading ...</h2>
+                </div>
+            );
+        }
         return(
-            <div className="col-1-of-4">
-                <div className="card">
-                <div className="card__side card__side--front">
-                    <div className="card__picture card__picture--1">
-                            &nbsp;
-                    </div>
-                    <h4 className="card__heading">
-                        <span className="card__heading-span card__heading-span-1">
-                                Supporter
-                        </span>
-                            
-                    </h4>
-                    <div className="card__details">
-                            <ul>
-                                <li>Support the independence of the Premium Times and our award-winning journalism</li>                                            
-                                <li>Get Welcome Package</li>
-                                <li>Insider Programs</li>
-                                <li>Four Tickets to Premium Times Events</li>
-                                <li>Weekly Briefings</li>
-                            </ul>
-                    </div>
-                </div>
-
-                <div className="card__side card__side--back card__side--back-1">
-                        <div className="card__call-to-action">
-                            <div className="card__price-box">
-                                <p className="card__price-only">
-                                    Only
-                                </p>
-                                <p className="card__price-value-month">
-                                        ₦10,000/Month
-                                </p>
-                                <p className="card__price-value-year">
-                                        ₦100,000/year
-                                </p>
-                            </div>
-                            <a href="#" className="btn btn--white">
-                                Join Now
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div>
+                {this.renderEachCard()}
             </div>
         )
     }
@@ -107,7 +89,7 @@ class LevelCard extends Component {
 
 const mapStateToProps = state => {
     
-    console.log(state );
+    return{ memberLevels: state.levels}
    
 };
-export default connect(mapStateToProps)(LevelCard);
+export default connect(mapStateToProps, { fetchLevels })(LevelCard);
