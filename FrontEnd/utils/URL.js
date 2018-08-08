@@ -25,7 +25,7 @@ const useAWSServer = typeof(useAWS) === "undefined" || (useAWS !== false);
 */
 const baseURL = "http://localhost:3000";
 
-console.debug(`============> URL.JS -- useAWSServer='${useAWSServer}' -- useAWS='${useAWS}' -- baseURL='${baseURL}'`);
+// console.debug(`============> URL.JS -- useAWSServer='${useAWSServer}' -- useAWS='${useAWS}' -- baseURL='${baseURL}'`);
 
 /**
 * List of URLs

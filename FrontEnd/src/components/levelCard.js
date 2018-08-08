@@ -16,7 +16,7 @@ class LevelCard extends Component {
         if(this.props.memberLevels.items.levels === undefined){
             return(
                 <div>
-                    <h2> LOADING 2</h2>
+                    <h2> POSSIBLE SERVER LOADING ERROR</h2>
                 </div>
             )
         }

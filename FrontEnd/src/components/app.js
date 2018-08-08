@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ErrorBoundry from "../components/errorBoundry";
 import LevelCard from "./levelcard";
 import BrandHeader from "./brandheader";
 import Introduction from "./introduction";
@@ -16,7 +17,9 @@ export default class App extends Component {
         <main>
           <Introduction />
           <LevelsBox>
-            <LevelCard />
+            <ErrorBoundry>
+              <LevelCard />
+            </ErrorBoundry>
           </LevelsBox>
           <Testimonials />
         </main>
