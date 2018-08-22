@@ -9,8 +9,8 @@ const cors = require('cors');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
-const levels = require('./routes/levels');
-const members = require('./routes/members');
+const api = require('./routes/api');
+// const members = require('./routes/members');
 
 const app = express();
 
@@ -42,8 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/levels', levels);
-app.use('/members', members);
+app.use('/api', api);
+//app.use('/members', members);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

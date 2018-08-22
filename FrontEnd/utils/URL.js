@@ -33,11 +33,11 @@ const baseURL = "http://localhost:3000";
 */
 const URL = {
    // LEVEL
-   addLevel:                      `${baseURL}/levels/add`,
-   archiveLevel:                  `${baseURL}/levels/:id/archive`,
-   getLevel:                      `${baseURL}levels/:id`,
-   getLevels:                     `${baseURL}/levels`,
-   updateLevel:                   `${baseURL}levels/:id/update`
+   addLevel:                      `${baseURL}/api/levels/add`,
+   archiveLevel:                  `${baseURL}/api/levels/:id/archive`,
+   getLevel:                      `${baseURL}/apilevels/:id`,
+   getLevels:                     `${baseURL}/api/levels`,
+   updateLevel:                   `${baseURL}/apilevels/:id/update`
 };
 
 /**
