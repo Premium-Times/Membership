@@ -2,9 +2,12 @@
 
 import React from "react";
 
+const getRandomInt = () => {
+  return Math.random().toString(36).substr(2, 9);
+}
 const renderDescriptors = (descriptors) => {
   return descriptors.map(descriptor => (
-    <li>{descriptor}</li>
+    <li key={getRandomInt()}>{descriptor}</li>
   ));
 };
 
