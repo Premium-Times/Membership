@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import LevelReducer from "./reducer_memberLevel"
+import LevelReducer from "./reducer_memberLevel";
 
 const rootReducer = combineReducers({
-  levels: LevelReducer
-  
+  levels: LevelReducer,
+
 });
 
 export default rootReducer;

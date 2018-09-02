@@ -14,7 +14,7 @@ const ENV = require("./env.json");
 const { useAWS } = false;
 
 // Make sure the useAWS variable is actually defined before referencing it
-const useAWSServer = typeof(useAWS) === "undefined" || (useAWS !== false);
+const useAWSServer = typeof (useAWS) === "undefined" || (useAWS !== false);
 
 // This will set the base URL depending on whether AWS or localhost is being used.
 // Note that Android OS uses a proxy for localhost, hence the need for the Platform check.
@@ -32,12 +32,12 @@ const baseURL = "http://localhost:3000";
 *
 */
 const URL = {
-   // LEVEL
-   addLevel:                      `${baseURL}/api/levels/add`,
-   archiveLevel:                  `${baseURL}/api/levels/:id/archive`,
-   getLevel:                      `${baseURL}/apilevels/:id`,
-   getLevels:                     `${baseURL}/api/levels`,
-   updateLevel:                   `${baseURL}/apilevels/:id/update`
+  // LEVEL
+  addLevel: `${baseURL}/api/levels/add`,
+  archiveLevel: `${baseURL}/api/levels/:id/archive`,
+  getLevel: `${baseURL}/apilevels/:id`,
+  getLevels: `${baseURL}/api/levels`,
+  updateLevel: `${baseURL}/apilevels/:id/update`,
 };
 
 /**
