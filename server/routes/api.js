@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const { check } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
 
 // Require controller module
 
@@ -21,6 +23,24 @@ router.get("/levels", level_controller.level_list);
 router.get("/members", member_controller.member_list);
 
 // Add a new member//
-router.post("/members", member_controller.member_create_post);
+router.post("/members", [
+  check('email')
+  .isEmail()
+  .normalizeEmail(),
+  check('first_Name')
+  .not().isEmpty()
+  .trim()
+  .escape(),
+  check('last_Name')
+  .not().isEmpty()
+  .trim()
+  .escape(),
+  check('password')
+  .not().isEmpty()
+  .isLength({ min: 7 })
+  .trim()
+  .escape(),
+  sanitizeBody('notifyOnReply').toBoolean()
+  ], member_controller.member_create_post);
 
 module.exports = router;

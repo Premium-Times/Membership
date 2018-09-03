@@ -1,5 +1,6 @@
 
 const Member = require("../models/member");
+const { validationResult } = require('express-validator/check');
 
 // Display list of all members.
 exports.member_list = (req, res, next) => {
@@ -28,9 +29,26 @@ exports.member_detail = (req, res) => {
 }; */
 
 // Handle member create on POST.
+// TODO: complete implementation of sanitozation
+// Encrypt password
 exports.member_create_post = (req, res) => {
-    
-    res.status(200).send("NOT IMPLEMENTED: member POST/Register route");
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }  
+  const newMember = new Member({
+      first_Name: req.body.first_Name,
+      last_Name: req.body.last_Name,
+      email: req.body.email,
+      password: req.body.password,
+  });
+  newMember.save((error) => {
+      if(error){
+        return res.status(422).json({ errors: error });
+      }
+      res.status(200).json({"Success": `${newMember.first_Name} Successfully Registered!`});
+  })
+  
 };
 
 // Display member delete form on GET.

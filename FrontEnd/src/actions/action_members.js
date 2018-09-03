@@ -36,7 +36,7 @@ const createMemberFailed = message => ({
 });
 
 export const registerMember = (values) => {
-  console.log(values);
+  console.log(JSON.stringify(values));
   return (dispatch) => {
     dispatch(createMemberBegin());
     return fetch(URL.addMember, {
@@ -48,7 +48,7 @@ export const registerMember = (values) => {
     })
       .then(res => res.json())
       .then((response) => {
-        console.log("Success:", JSON.stringify(response));
+        console.log("Success:", response);
         dispatch(createMemberSucces(response));
       })
       .catch((error) => {

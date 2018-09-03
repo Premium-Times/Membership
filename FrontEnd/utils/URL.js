@@ -41,7 +41,7 @@ const URL = {
 
   // MEMBERS
 
-  addMember: `${baseURL}/api/members/register`,
+  addMember: `${baseURL}/api/members`,
   getMember: `${baseURL}/api/members/:id`,
   getMembers: `${baseURL}/api/members`,
   updateMember: `${baseURL}/api/members/:id/update`,
