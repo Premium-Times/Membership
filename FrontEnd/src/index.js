@@ -26,6 +26,7 @@ ReactDOM.render(
         <main>
           <Switch>
             <Route path="/register" component={MemberRegister} />
+            <Route path="/members" component={MembersIndex} />
             <Route path="/" component={App} />
           </Switch>
         </main>

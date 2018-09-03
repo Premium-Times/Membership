@@ -11,7 +11,6 @@ exports.member_list = (req, res, next) => {
               return next(err); 
             }
           //Successful, so send data
-          // console.log(list_levels);
           res.type('json');
           res.status(200);
           res.json({members});
@@ -29,12 +28,13 @@ exports.member_detail = (req, res) => {
 }; */
 
 // Handle member create on POST.
-// TODO: complete implementation of sanitozation
-// Encrypt password
+// TODO: Encrypt password
+// TODO: Ensure we are not saving duplicate data
+
 exports.member_create_post = (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
+      return res.status(412).json({ errors: errors.array() });
     }  
   const newMember = new Member({
       first_Name: req.body.first_Name,
@@ -46,7 +46,7 @@ exports.member_create_post = (req, res) => {
       if(error){
         return res.status(422).json({ errors: error });
       }
-      res.status(200).json({"Success": `${newMember.first_Name} Successfully Registered!`});
+      res.status(201).json({"Success": `${newMember.first_Name} Successfully Registered!`});
   })
   
 };

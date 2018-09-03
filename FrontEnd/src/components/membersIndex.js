@@ -13,7 +13,7 @@ class MemebersIndex extends Component {
     return _.map(items, (member) => {
       return (
         <li key={member._id} className="list-group">
-          { member.title }
+          {`${member.first_Name} ${member.last_Name}`}
         </li>
       );
     });
