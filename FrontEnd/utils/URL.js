@@ -35,9 +35,17 @@ const URL = {
   // LEVEL
   addLevel: `${baseURL}/api/levels/add`,
   archiveLevel: `${baseURL}/api/levels/:id/archive`,
-  getLevel: `${baseURL}/apilevels/:id`,
+  getLevel: `${baseURL}/api/levels/:id`,
   getLevels: `${baseURL}/api/levels`,
-  updateLevel: `${baseURL}/apilevels/:id/update`,
+  updateLevel: `${baseURL}/api/levels/:id/update`,
+
+  // MEMBERS
+
+  addMember: `${baseURL}/api/members/register`,
+  getMember: `${baseURL}/api/members/:id`,
+  getMembers: `${baseURL}/api/members`,
+  updateMember: `${baseURL}/api/members/:id/update`,
+  archiveMember: `${baseURL}/api/members/:id/archive`,
 };
 
 /**

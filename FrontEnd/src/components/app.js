@@ -16,8 +16,6 @@ export default class App extends Component {
     return (
       <div>
         <BrandHeader />
-
-
         <main>
           <Introduction />
           <LevelsBox>
@@ -27,9 +25,7 @@ export default class App extends Component {
           </LevelsBox>
           <Testimonials />
         </main>
-        <Footer />
       </div>
-
     );
   }
 }
