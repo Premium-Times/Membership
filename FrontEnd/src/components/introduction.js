@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
+
 class Introduction extends Component {
+  componentDidMount() {
+
+  }
+
   render() {
     return (
 
@@ -31,9 +36,9 @@ class Introduction extends Component {
           </div>
           <div className="col-1-of-2">
             <div className="composition">
-              <img src="img/nat-1-large.jpg" alt="Photo 1" className="composition__photo composition__photo--p1" />
-              <img src="img/nat-2-large.jpg" alt="Photo 2" className="composition__photo composition__photo--p2" />
-              <img src="img/nat-3-large.jpg" alt="Photo 3" className="composition__photo composition__photo--p3" />
+              <img src="img/nat-1-large.jpg" alt="Join us 1" className="composition__photo composition__photo--p1" />
+              <img src="img/nat-2-large.jpg" alt="Join us 2" className="composition__photo composition__photo--p2" />
+              <img src="img/nat-3-large.jpg" alt="Join us 3" className="composition__photo composition__photo--p3" />
             </div>
           </div>
         </div>

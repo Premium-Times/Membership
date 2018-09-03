@@ -1,8 +1,13 @@
 // The jumbo section of the website
 
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class BrandHeader extends Component {
+  componentDidMount() {
+
+  }
+
   render() {
     return (
 
@@ -33,7 +38,7 @@ class BrandHeader extends Component {
 
           </h1>
 
-          <a href="#" className=" btn btn--white">JOIN</a>
+          <Link className="btn btn--white" to="/register">JOIN</Link>
         </div>
 
       </header>
