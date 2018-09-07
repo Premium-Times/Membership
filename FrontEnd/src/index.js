@@ -8,9 +8,11 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import App from "./components/app";
 import reducers from "./reducers";
+import Header from "./components/header";
 import Footer from "./components/footer";
 import MembersIndex from "./components/membersIndex";
 import MemberRegister from "./components/memberRegister";
+import MemberWelcome from "./components/memberWelcome";
 
 const loggerMiddleware = createLogger();
 
@@ -23,9 +25,11 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
+        <Header />
         <main>
           <Switch>
             <Route path="/register" component={MemberRegister} />
+            <Route path="/welcome" component={MemberWelcome} />
             <Route path="/members" component={MembersIndex} />
             <Route path="/" component={App} />
           </Switch>

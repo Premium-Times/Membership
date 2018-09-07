@@ -8,65 +8,89 @@ class MemberRegister extends Component {
   componentDidMount() {
 
   }
+
+  onSubmit(values) {
+    this.props.registerMember(values, () => {
+      return this.props.history.push("/welcome");
+    });
+  }
   // TODO: Style form
   renderField(field) {
       const { meta: { touched, error }} = field;
-      const className = `form-group ${ touched && error ? "has-danger" : " " }`;
+      const className = `form__group ${ touched && error ? "form__danger" : " " }`;
     return (
       <div className={className}>
         <label>
           { field.label }
         </label>
         <input
-        className="form-control"
-          type="text"
+          className="form__control"
+          placeholder={ field.customPlaceholder ? field.customPlaceholder : field.label }
+          type={ field.type ? field.type : "text" }
+          required
           {...field.input}
         />
-        <div className="text-help">
-            { touched ? error : " " }
+        <div className="form__text-help">
+          { touched ? error : " " }
         </div>
         
       </div>
     );
   }
 
-  onSubmit(values) {
-    this.props.registerMember(values);
-  }
+ 
 
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <Field
-          label="First Name"
-          name="first_Name"
-          component={this.renderField}
-        />
-        <Field
-          label="Last Name"
-          name="last_Name"
-          component={this.renderField}
-        />
-        <Field
-          label="Email"
-          name="email"
-          component={this.renderField}
-        />
-        <Field
-          label="Phone"
-          name="phone"
-          component={this.renderField}
-        />
-        <Field
-          label="Password"
-          name="password"
-          component={this.renderField}
-        />
-
-        <button type="submit" className="btn btn--ptn">Register</button>
-        <Link className="btn btn--white" to="/">Cancel</Link>
-      </form>
+      <div className="row">
+        <div className="section-register">
+          <div className="u-center-text u-margin-bottom-small">
+            <h2 className="heading-secondary">
+                  REGISTER
+            </h2>
+          </div>
+          <div className="register__form">
+            <form className="form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+              <Field
+                label="First Name"
+                name="first_Name"
+                component={this.renderField}
+              />
+              <Field
+                label="Last Name"
+                name="last_Name"
+                customPlaceholder="Surname"
+                component={this.renderField}
+              />
+              <Field
+                label="Email"
+                name="email"
+                type="email"
+                component={this.renderField}
+              />
+              <Field
+                label="Phone"
+                customPlaceholder="080 000 0000"
+                type="tel"
+                name="phone"
+                component={this.renderField}
+              />
+              <Field
+                label="Password"
+                name="password"
+                type="password"
+                component={this.renderField}
+              />
+              <div className="form__buttons">
+                <button type="submit" className="btn btn--ptn">Join Now</button>
+                <Link className="btn btn--gray" to="/">Cancel</Link>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div>
     );
   }
 }
@@ -88,14 +112,18 @@ function validate(values) {
     errors.email = "Enter your email";
   }
 
-  // Validate first name
+  // Validate phone number
   if (!values.phone) {
     errors.phone = "Enter your phone number";
   }
 
-  // Validate first name
+  // Validate password
   if (!values.password) {
     errors.password = "Enter your Password";
+  }
+  // Validate password
+  if (values.password && values.password.length < 7) {
+    errors.password = "Password must be at least eight characters";
   }
   return errors;
 }

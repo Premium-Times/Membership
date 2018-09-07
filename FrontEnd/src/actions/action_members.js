@@ -35,7 +35,7 @@ const createMemberFailed = message => ({
   payload: { message },
 });
 
-export const registerMember = (values) => {
+export const registerMember = (values, callback) => {
   console.log(JSON.stringify(values));
   return (dispatch) => {
     dispatch(createMemberBegin());
@@ -47,10 +47,10 @@ export const registerMember = (values) => {
       },
     })
       .then(res => res.json())
-      .then((response) => {
-        console.log("Success:", response);
+      .then((response) => { 
         dispatch(createMemberSucces(response));
       })
+      .then(() => callback())
       .catch((error) => {
         console.error("Error:", error);
         dispatch(createMemberFailed(error));
