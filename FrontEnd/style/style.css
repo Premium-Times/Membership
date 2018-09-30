@@ -735,9 +735,10 @@ body {
 .form__buttons {
   display: inline-block;
 }
-.section-welcome {
+.single-page {
   padding: 3rem;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
   margin: 3rem auto;
-  max-width: 70rem;
+  max-width: 90rem;
+
 }

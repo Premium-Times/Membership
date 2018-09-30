@@ -13,6 +13,7 @@ import Footer from "./components/footer";
 import MembersIndex from "./components/membersIndex";
 import MemberRegister from "./components/memberRegister";
 import MemberWelcome from "./components/memberWelcome";
+import AboutUs from "./components/aboutUs";
 
 const loggerMiddleware = createLogger();
 
@@ -29,6 +30,7 @@ ReactDOM.render(
         <main>
           <Switch>
             <Route path="/register" component={MemberRegister} />
+            <Route path="/about" component={AboutUs} />
             <Route path="/welcome" component={MemberWelcome} />
             <Route path="/members" component={MembersIndex} />
             <Route path="/" component={App} />

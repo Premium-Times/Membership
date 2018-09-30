@@ -82,6 +82,13 @@ class MemberRegister extends Component {
                 type="password"
                 component={this.renderField}
               />
+              <Field
+                label="Supporter"
+                name="supporter"
+                type="radio"
+                value="supporter"
+                component={this.renderField}
+            />
               <div className="form__buttons">
                 <button type="submit" className="btn btn--ptn">Join Now</button>
                 <Link className="btn btn--gray" to="/">Cancel</Link>
