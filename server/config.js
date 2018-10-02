@@ -3,7 +3,7 @@ const config = {
         port: 3000
       },
       db: {
-        host: "localhost",
+        host: "mdbservice",
         port: 27017,
         name: "membersdb"
       }

@@ -1,0 +1,30 @@
+version: '3'
+services:
+  memberservice:
+    container_name: memberservice
+    restart: always
+    build: './server/'
+    ports:
+     - '3000:3000'
+    links:
+      - mdbservice
+  mdbservice:
+    container_name: mdbservice
+    image: mongo
+    ports:
+      - '27017:27017'
+  webservice:
+    container_name: webservice
+    # restart: always
+    build: './frontend/'
+    expose:
+      - '8080'
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./frontend/src:/usr/src/app/src
+      - ./frontend/public:/usr/src/app/public
+    depends_on:
+      - memberservice
+    links:
+      - memberservice
